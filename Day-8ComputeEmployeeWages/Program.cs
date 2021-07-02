@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day_8ComputeEmployeeWages
 {
-    class EmployeeWage
+    class employeeWage
     {
         public const int Full_Time = 1;
         public const int Part_Time = 2;
@@ -53,14 +53,12 @@ namespace Day_8ComputeEmployeeWages
             Console.WriteLine("Employee Wage for {0} days = {1} ", MAX_Working_Days, totalWage);
 
         }
-        class program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            ComputeWage();
+            Console.Read();
 
-            {
-                EmployeeWage.ComputeWage();
-                Console.Read();
-            }
+
         }
     }
 }
