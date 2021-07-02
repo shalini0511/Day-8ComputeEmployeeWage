@@ -6,59 +6,87 @@ using System.Threading.Tasks;
 
 namespace Day_8ComputeEmployeeWages
 {
-    class employeeWage
+    class Program
     {
-        public const int Full_Time = 1;
-        public const int Part_Time = 2;
-        public const int MAX_Working_Days = 5;
-        public const int MAX_Working_Hrs = 8;
-        public const int Emp_rate_per_Hour = 20;
-        public static void ComputeWage()
+        public int len1;
+        public int len2;
+        public int x1;
+        public int y1;
+        public int x2;
+        public int y2;
+
+
+        public Program()
         {
-
-            int empHours = 0;
-            int empWage = 0;
-            int workingHrs = 0;
-            int totalWage = 0;
-            int Working_Days = 2;
-            Random random = new Random();
-            while (Working_Days <= MAX_Working_Days && workingHrs <= MAX_Working_Hrs)
+            double[] StoringLength = new double[5];
+            for (int i = 1; i < 2; i++)
             {
-                int empInput = random.Next(0, 3);
-                switch (empInput)
-                {
-                    case Full_Time:
-                        empHours = 8;
-                        break;
-                    case Part_Time:
-                        empHours = 4;
-                        break;
-                    default:
-                        empHours = 0;
-                        break;
-                }
+                Console.WriteLine("Enter value for  coordinate x1");
+                this.x1 = Convert.ToInt32(Console.ReadLine());
 
-                empWage = Emp_rate_per_Hour * empHours;
-                workingHrs += empHours;
-                totalWage += empWage;
-                if (empInput != 0)
-                {
-                    Working_Days++;
-                }
+                Console.WriteLine("Enter value for   coordinate y1");
+                this.y1 = Convert.ToInt32(Console.ReadLine());
 
 
+                Console.WriteLine("Enter value for  first coordinate x2");
+                this.x2 = Convert.ToInt32(Console.ReadLine());
 
+                Console.WriteLine("Enter value for  first coordinate y2");
+                this.y2 = Convert.ToInt32(Console.ReadLine());
             }
-            Console.WriteLine("workingHrs = {0} working days = {1} ", workingHrs, Working_Days);
-            Console.WriteLine("Employee Wage for {0} days = {1} ", MAX_Working_Days, totalWage);
+        }
+        public double FindingLength()
+        {
+            //Calculating a line length
+            double LineLength = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+            double len = Math.Round(LineLength, 2);
+            return len;
 
+        }
+
+        public void EqualityMethod(string len1, string len2)
+        {
+            if (len1.Equals(len2))
+            {
+                Console.WriteLine("Lines are equal");
+            }
+            else
+            {
+                Console.WriteLine("Lines are not equal");
+            }
+        }
+
+        public void comparingLines(string len1, string len2)
+        {
+            if (len1.CompareTo(len2) > 0)
+            {
+                Console.WriteLine("Line1 is greater than line2");
+            }
+            else if (len1.CompareTo(len2) < 0)
+            {
+                Console.WriteLine("Line1 is lesser than line2");
+            }
+            if (len1.CompareTo(len2) > 0)
+            {
+                Console.WriteLine("both lines are equal");
+            }
         }
         static void Main(string[] args)
         {
-            ComputeWage();
-            Console.Read();
+            Program obj1 = new Program();
+            double length1 = obj1.FindingLength();
+            Program obj2 = new Program();
+            double length2 = obj2.FindingLength();
+
+            Console.WriteLine("Length of First Line " + length1);
+            Console.WriteLine("Length of Second Line " + length2);
+            obj1.EqualityMethod(length1.ToString(), length2.ToString());
+            obj2.comparingLines(length1.ToString(), length2.ToString());
+
 
 
         }
+
+
     }
 }
